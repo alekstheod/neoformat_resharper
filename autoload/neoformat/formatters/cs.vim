@@ -1,5 +1,5 @@
 function! neoformat#formatters#cs#enabled() abort
-    return ['uncrustify', 'astyle', 'clangformat', 'csharpier']
+    return ['uncrustify', 'astyle', 'clangformat', 'csharpier', 'resharper']
 endfunction
 
 function! neoformat#formatters#cs#uncrustify() abort
@@ -30,6 +30,14 @@ function! neoformat#formatters#cs#csharpier() abort
     return {
         \ 'exe': 'dotnet',
         \ 'args': ['csharpier'],
+        \ 'stdin': 1,
+        \ }
+endfunction
+
+function! neoformat#formatters#cs#resharper() abort
+    return {
+        \ 'exe': 'jb',
+        \ 'args': ['cleanupcode','--profile="Built-in: Reformat Code"', expand('%:t')],
         \ 'stdin': 1,
         \ }
 endfunction
