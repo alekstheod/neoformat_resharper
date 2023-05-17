@@ -38,6 +38,7 @@ function! neoformat#formatters#cs#resharper() abort
     return {
         \ 'exe': 'jb',
         \ 'args': ['cleanupcode','--profile="Built-in: Reformat Code"','"' . expand('%') . '"'],
-        \ 'stdin': 0,
+        \ 'stdin': 1,
+        \ 'replace': 0,
         \ }
 endfunction
